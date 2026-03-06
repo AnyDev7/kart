@@ -30,8 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')  # Se cambio el texto explícito, por el dic de 'decouple' en '.env'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# 25 Feb 2026 Antes VPS Hostinger DEBUG = config('DEBUG', default=False, cast=bool)  # Se cambio el texto explícito, por el dic de 'decouple' en '.env'
-DEBUG = False # puesto 25 Feb 2026 para VPS Hostinger
+DEBUG = config('DEBUG', default=False, cast=bool)  # Se cambio el texto explícito, por el dic de 'decouple' en '.env'
+# 6 Mar 2026, se regresó a manejo de variables de entorno con DECOUPLE,linea arriba: DEBUG = False # puesto 25 Feb 2026 para VPS Hostinger
 # 25 Feb 2026 Antes VPS Hostinger ALLOWED_HOSTS = ['ghetti-mart-env.eba-w2yhw2nf.us-west-2.elasticbeanstalk.com', '127.0.0.1']
 ALLOWED_HOSTS = ['*', 'anydev7.shop', 'www.anydev7.shop', '191.101.14.94', 'localhost', '127.0.0.1'] # puesto 25 Feb 2026 para VPS Hostinger
 
