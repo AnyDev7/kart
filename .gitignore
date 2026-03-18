@@ -188,6 +188,7 @@ env.bat
 run.bat
 migrate.bat
 migrations.bat
+Copia env_copia
 
 
 
