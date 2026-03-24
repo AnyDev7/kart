@@ -50,10 +50,10 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
                 try:
                     # '__iexact' no importa si son mayusculas o minusculas
                     if len(value_stock) > 0:
-                        #OK variations = StockVar.objects.all().filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value), value__iexact=value_stock)
+                        #OK variations = StockVar.objects.all().filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value), value__iexact=value_stock)                        
                         variations = StockVar.objects.filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value), value__iexact=value_stock)
                     else:
-                        #OK variations = StockVar.objects.all().filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value))
+                        #OK variations = StockVar.objects.all().filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value))                        
                         variations = StockVar.objects.filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value))
                     
                     for var in variations: 
