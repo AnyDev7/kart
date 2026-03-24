@@ -86,8 +86,10 @@ def product_detail(request, category_slug, product_slug):
     try:              # con doble '__' se hace recursivo a parámetro de un campo 'foreign key'
         single_product = Product.objects.get(categories__slug=category_slug, slug=product_slug)
         subcat = SubCategory.objects.get(slug=category_slug)
-
-        varsall = StockVar.objects.all().filter(product = single_product).order_by('variation__varcat')
+        
+        # OK 23 marzo 2026 se cambio a .order_by('variation')
+        varsall = StockVar.objects.all().filter(product = single_product).order_by('variation') #ordenar para unificar productos por variación
+        
         #Prefetch Foreign https://stackoverflow.com/questions/76143776/django-template-language-how-to-write-model-model-set-filter-in-a-template
         #https://forum.djangoproject.com/t/how-to-filter-this-manytomany-relation/6451
         #followed_posts = Posts.objects.filter(autor__followers__username=user_username)
