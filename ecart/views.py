@@ -215,7 +215,7 @@ def minus_add_to_prod(request, product_id, cart_item_id, flag=False):
         if flag:
             cart_item.quantity += 1
         else:
-            if cart_item.quantity > 1:
+            if cart_item.quantity >= 1:
                 cart_item.quantity -= 1
         cart_item.save()
     except:
