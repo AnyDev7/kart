@@ -24,17 +24,6 @@ class RegisterForm(forms.ModelForm):
         'class': 'form-control',
     }))
 
-# Borrar, es para Mesas de FoodTruck App
-    CHOICES = {"1": "First", "2": "Second"} # Borrar
-    choice_field = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES) # Borrar
-    
-    TABLES = ( # Borrar
-        ("AUT", "Mesa 1"),
-        ("DEU", "Mesa 2"),
-        ("NLD", "Mesa 3"),
-    )
-    tables = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=TABLES) # Borrar
-# Hasta aqui borrar
 
     class Meta:
         model = Account
@@ -84,3 +73,15 @@ class UserProfileForm(forms.ModelForm):
 #
 # https://developer.mozilla.org/es/docs/Learn/Server-side/Django/Forms
 # Form validation Bootstrap: https://getbootstrap.com/docs/5.0/forms/validation/
+
+# Borrar, es para Mesas de FoodTruck App
+    """CHOICES = {"1": "First", "2": "Second"} # Borrar
+    choice_field = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES) # Borrar
+    
+    TABLES = ( # Borrar
+        ("AUT", "Mesa 1"),
+        ("DEU", "Mesa 2"),
+        ("NLD", "Mesa 3"),
+    )
+    tables = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=TABLES) # Borrar"""
+# Hasta aqui borrar
