@@ -16,7 +16,7 @@ class AddressForm(forms.ModelForm):
 
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': 'nuevo contraseña',
+        'placeholder': 'nueva contraseña',
         'class': 'form-control',
     }))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={

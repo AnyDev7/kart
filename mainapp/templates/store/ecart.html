@@ -72,9 +72,9 @@
 	</td>
 	<td> 
 		<div class="price-wrap"> 
-            {% if cart_item.product.low_price %}
-				<var class="price sm">${{cart_item.product.low_price|floatformat:"2g"}}</var> 
-				<del class="price-old"> ${{cart_item.product.price|floatformat:"2g"}} </del> 
+            {% if cart_item.product.has_discount %}
+							<var class="price sm">${{cart_item.product.low_price|floatformat:"2g"}}</var> 
+							<del class="price-old"> ${{cart_item.product.price|floatformat:"2g"}} </del> 
             {% else %}
             	<var class="price">${{cart_item.product.price|floatformat:"2g"}}</var> 
             {% endif %}
@@ -115,7 +115,7 @@
 			{% if total > 0 %}
 				<a href="{% url "select_address" total|stringformat:"f" 1 %}" class="btn btn-primary btn-block"> Comprar ahora </a>
 			{% else %}
-				<a href="" class="btn btn-light btn-block"> Comprar ahora </a>
+				<a href="" class="btn btn-light btn-block"> Agregue productos </a>
 			{% endif %}
 			<!--<a href="{% url "store" %}" class="btn btn-light btn-block">Buscar más</a>-->
 			<a href="{% url "store" %}" class="btn btn-outline-primary btn-block">Buscar más</a>

@@ -51,10 +51,10 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
                     # '__iexact' no importa si son mayusculas o minusculas
                     if len(value_stock) > 0:
                         #OK variations = StockVar.objects.all().filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value), value__iexact=value_stock)                        
-                        variations = StockVar.objects.filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value), value__iexact=value_stock)
+                        variations = StockVar.objects.filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value), value__iexact=value_stock).order_by('variation')
                     else:
                         #OK variations = StockVar.objects.all().filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value))                        
-                        variations = StockVar.objects.filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value))
+                        variations = StockVar.objects.filter(product__id=product_id, variation = Variation.objects.get(variation__iexact=value)).order_by('variation')
                     
                     for var in variations: 
                         product_variations.append(var)
@@ -69,6 +69,7 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
             exist_var_list = []
             id_cartitem_list = []
             # Manejo de listas e índices, checar si current_vars are in existing_vars
+            # cambiar item por cart_item
             for item in cart_items:
                 existing_variations = item.variations.all()
                 exist_var_list.append(list(existing_variations))
@@ -77,6 +78,7 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
             if product_variations in exist_var_list:  # Se van recorriendo las dos listas
                 index = exist_var_list.index(product_variations)  # obtener el indice de esa variacion
                 item_id = id_cartitem_list[index]  # obtener el valor de esa posición del indice
+                # cambiar item por cart_item
                 item = CartItem.objects.get(product=product, id=item_id)
                 # Increase cart item quantity
                 if flag:
@@ -87,6 +89,7 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
                 item.save()
             else: # Si las variaciones no existen en el cart
                 # Create new CartItem item, agregar un nuevo registro a la tabla
+                # cambiar item por cart_item
                 item = CartItem.objects.create(user=current_user, product=product, quantity=1)                
                 # Agregar variaciones. Se agregan todos los registros a la tabla, se hace manual.
                 item.variations.clear()
@@ -159,6 +162,7 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
             exist_var_list = []
             id_cartitem_list = []
             # Manejo de listas e índices, checar si current_vars are in existing_vars
+            # cambiar item por cart_item
             for item in cart_items:
                 existing_variations = item.variations.all()
                 exist_var_list.append(list(existing_variations))
@@ -168,6 +172,7 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
             if product_variations in exist_var_list:  # Se van recorriendo las dos listas
                 index = exist_var_list.index(product_variations)  # obtener el indice de esa variacion
                 item_id = id_cartitem_list[index]  # obtener el valor de esa posición del indice
+                # cambiar item por cart_item
                 item = CartItem.objects.get(product=product, id=item_id)
                 # Increase cart item quantity
                 if flag:
@@ -179,6 +184,7 @@ def add_prod(request, product_id, flag=False): # ADD_CART course
                 item.save()
             else: # Si las variaciones no existen en el cart
                 # Create new CartItem item, agregar un nuevo registro a la tabla
+                # cambiar item por cart_item
                 item = CartItem.objects.create(product=product, cart=cart, quantity=1)                
                 # Agregar variaciones. Se agregan todos los registros a la tabla, se hace manual.
                 item.variations.clear()                
@@ -303,7 +309,7 @@ def select_address(request, total="", flag=0):
 
     if address == None:
         address = False
-        messages.warning(request, 'No tienes una direccion favorita predeterminada.')
+        messages.warning(request, 'Registra una direccion favorita.')
             
     context = {
     'total': float(total),
