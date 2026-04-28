@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 
 from kart.settings import STATES_MX
+from kart.settings import COMPANY
 
 
 from .forms import RegisterForm, UserForm, UserProfileForm, AddressForm
@@ -69,7 +70,7 @@ def register(request):
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': default_token_generator.make_token(user),
-                'company': 'AP Equipos Integrados SA CV',
+                'company': COMPANY,
             })
             to_email = email
             send_email = EmailMessage(mail_subject, mail_message, to=[to_email])
@@ -217,7 +218,7 @@ def forgot_password(request):
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': default_token_generator.make_token(user),
-                'company': 'AP Equipos Integrados SA CV',
+                'company': COMPANY,
             })
             to_email = email
             send_email = EmailMessage(mail_subject, mail_message, to=[to_email])
