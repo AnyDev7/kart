@@ -33,7 +33,7 @@ SECRET_KEY = config('SECRET_KEY')  # Se cambio el texto explícito, por el dic d
 DEBUG = config('DEBUG', default=False, cast=bool)  # Se cambio el texto explícito, por el dic de 'decouple' en '.env'
 # 6 Mar 2026, se regresó a manejo de variables de entorno con DECOUPLE,linea arriba: DEBUG = False # puesto 25 Feb 2026 para VPS Hostinger
 # 27 Abrb 2026 se quitó: '*', 
-ALLOWED_HOSTS = ['anydev7.shop', 'www.anydev7.shop', '127.0.0.1'] # puesto 25 Feb 2026 para VPS Hostinger
+ALLOWED_HOSTS = ['anydev7.shop', 'www.anydev7.shop', '127.0.0.1']
 
 
 # Application definition
