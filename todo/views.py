@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Task
+from kart.settings import COMPANY
 
 
 # templates, cada app tiene su dir 'templates' al agregar la app en 'settings' se agregan sus dirs
@@ -22,6 +23,7 @@ def todo(request):
     context = {
         'title': 'Por hacer|▲▼AnyDev7',
         'tasks': tasks,
+        'COMPANY': COMPANY,
     }
     return render(request, 'home-todo.html', context)
 

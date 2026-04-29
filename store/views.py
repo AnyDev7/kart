@@ -14,6 +14,7 @@ from ecart.views import _cart_id
 from .forms import formRating
 from order.models import OrderProduct
 from account.models import UserProfile
+from kart.settings import PROD_PER_PAGE
 
 # Create your views here.
 """
@@ -70,7 +71,7 @@ def store(request, category_slug=None, cat_slug=None, flag=None):
         low_prod_count = low_prods.count()
 
     if products:    
-        paged_products = paging(request, products, 3) # Modificar la cantidad de productos por página
+        paged_products = paging(request, products, PROD_PER_PAGE) # cantidad de productos por página variable de entorno PROD_PER_PAGE
     
     context = {
         'title': 'Store',

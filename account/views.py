@@ -51,9 +51,8 @@ def register(request):
             user.country = country
             
             """ Checar USUARIO REGISTRADO NO ACTIVADO
-            check_user = get_object_or_404(Account, email=email)
-            if check_user.email == email and not check_user.is_active:
-                return HttpResponse("El usuario existe, pero NO esta inactivo")
+            la verificación se hace en el form, el campo email está como unique en el modelo de Account
+            en la form se maneja el mensaje de error.
             """
             user.save()
             # Create User Profile
