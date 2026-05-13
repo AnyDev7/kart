@@ -45,7 +45,8 @@
                 
                 
                     <div class="dropdown-menu">
-                        {% comment %}  Sí funciona: <a class="dropdown-item" href="{% url "prod_by_cat" subcat.slug %}">{{subcat.name}} {% endcomment %}
+                        {% comment %}  Sí funciona: <a class="dropdown-item" href="{% url 'prod_by_cat' subcat.slug %}">{{subcat.name}} 
+                        {% endcomment %}
                             <a class="dropdown-item" href=" {% url "store" %} ">Todos los productos</a>
                             <div class="dropdown-divider"></div>
                         {% for subcat in subcat_links %}
@@ -76,7 +77,7 @@
                             <small class="title text-muted">¡Bienvenido como invitado!</small>
                             <div> 
                                 <a href="{% url 'login' %}">Ingresa</a> <span class="dark-transp"> | </span>
-                                <a href="{% url "register" %}"> Crea tu cuenta</a>
+                                <a href="{% url 'register' %}"> Crea tu cuenta</a>
                             </div>
                         </div>
                         <a href="{% url "ecart" %}" class="widget-header pl-3 ml-3">
